@@ -26,10 +26,10 @@ Le code jouable est autonome dans `index.html` et utilise le Canvas 2D natif.
 - **Wander simplifié** : hors du rayon de fuite, une souris choisit périodiquement une direction aléatoire.
 - **Séparation de segments** : correction géométrique de la distance au prédécesseur.
 
-Le code actuel **ne fait pas appel** aux méthodes `Vehicle.seek()`, `Vehicle.flee()` ou `Vehicle.arrive()` du dépôt du professeur.
+Le jeu utilise désormais **la classe `Vehicle` originale du professeur**. La tête du serpent exploite `Vehicle.seek()` pour le calcul d'orientation et les souris exploitent `Vehicle.flee()` pour s'éloigner du serpent. Le rendu demeure en Canvas 2D. L'adaptateur `src/behaviors/course-vector.js` fournit les opérations vectorielles requises par ces méthodes. `Vehicle.arrive()` n'est pas utilisé actuellement.
 
 ## Matériel pédagogique
-Les fichiers copiés depuis le cours sont regroupés dans `course-reference/`, avec attribution explicite. Ils **ne sont pas exécutés** par le jeu actuel. Leur utilisation réelle requiert une intégration avec p5.js et une adaptation des entités.
+Les fichiers copiés depuis le cours sont regroupés dans `course-reference/`, avec attribution explicite. Le fichier `vehicle.js` est **chargé et exécuté** par le jeu ; les autres restent des références non chargées. Leur utilisation réelle requiert une intégration avec p5.js et une adaptation des entités.
 
 Source pédagogique : https://github.com/micbuffa/IA2_SteeringBehaviors_Casablanca_G2/tree/main/1-Seek
 
