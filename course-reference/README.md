@@ -8,9 +8,9 @@ Ce répertoire contient des copies **non modifiées** de fichiers pédagogiques 
 
 ## Statut d'intégration
 
-**Ces fichiers sont fournis en référence et ne sont pas chargés par le jeu actuel.**
+**La classe `vehicle.js` est maintenant chargée et utilisée par le jeu.** Les autres fichiers restent des références.
 Le jeu jouable est actuellement autonome dans `../index.html`, en Canvas 2D natif, sans p5.js.
 
-La classe `Vehicle` du professeur repose sur p5.js et `createVector()`. Pour pouvoir réellement utiliser ses méthodes `seek()`, `flee()` et `arrive()` dans la simulation, il faut adapter les entités du jeu et charger les dépendances p5 appropriées. La seule copie de ces fichiers ne constitue pas une intégration des algorithmes.
+La classe `Vehicle` du professeur repose sur p5.js et `createVector()`. Un adaptateur de vecteurs compatible avec les opérations nécessaires (`src/behaviors/course-vector.js`) permet d'utiliser `Vehicle.seek()` et `Vehicle.flee()` sans charger la bibliothèque p5.js complète. La méthode `arrive()` n'est pas utilisée.
 
 Le code source n'affiche pas de licence explicite lors de l'inspection du dépôt ; les fichiers sont ici attribués à leur dépôt d'origine et réutilisés dans un cadre pédagogique, sans prétendre qu'ils ont été écrits par l'auteur de 1-Seek — Snake Hunt.
