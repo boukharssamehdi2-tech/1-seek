@@ -24,7 +24,8 @@ Jeu de poursuite interactif en **HTML, CSS et JavaScript (Canvas 2D)**, héberg�
 ├── src/
 │   ├── game.js                # Boucle de jeu, rendu et interactions
 │   └── behaviors/
-│       └── steering.js        # Seek, Flee, Wander simplifiés
+│       ├── steering.js        # Direction Wander et utilitaires
+│       └── course-vector.js   # Adaptateur vectoriel pour Vehicle
 ├── docs/
 │   └── behavior-mapping.md    # Cartographie des comportements
 ├── tests/
@@ -53,9 +54,9 @@ node --test tests/*.test.cjs
 Les tests vérifient la direction de poursuite, la direction de fuite, la stabilité à distance nulle et la direction d'errance.
 
 ## Lien avec le cours de Steering Behaviors
-Le module `src/behaviors/steering.js` implémente **Seek, Flee et Wander sous forme de vecteurs directionnels simplifiés** utilisés dans le jeu. Ces fonctions ne reproduisent pas encore le calcul complet des forces de steering de la classe `Vehicle` de p5.js.
+Le jeu charge maintenant **la classe originale `Vehicle` du professeur**, sans modification, via `course-reference/vehicle.js`. Le serpent utilise `Vehicle.seek()` pour calculer sa force d'orientation et les souris utilisent `Vehicle.flee()` en cas de menace. Un adaptateur vectoriel local (`src/behaviors/course-vector.js`) fournit les opérations nécessaires sans charger toute la bibliothèque p5.js. Le suivi des segments et l'errance restent spécifiques au jeu.
 
-Les fichiers originaux du professeur sont regroupés dans `course-reference/` **à titre de références pédagogiques non exécutées**. Leur provenance est documentée :
+Les fichiers originaux du professeur sont regroupés dans `course-reference/` **comme références pédagogiques ; seul `vehicle.js` est chargé à l'exécution**. Leur provenance est documentée :
 https://github.com/micbuffa/IA2_SteeringBehaviors_Casablanca_G2/tree/main/1-Seek
 
 Le code de Snake Hunt, ses réglages et son arène restent propres au projet.
