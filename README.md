@@ -1,35 +1,64 @@
 # 1-Seek — Snake Hunt 🐍
 
-Jeu de poursuite interactif en **HTML, CSS et JavaScript (Canvas 2D)**, jouable dans un navigateur.
+Jeu de poursuite interactif en **HTML, CSS et JavaScript (Canvas 2D)**, hébergé sur GitHub Pages.
 
-**Jouer :** https://boukharssamehdi2-tech.github.io/1-seek/
+**🎮 Jouer :** https://boukharssamehdi2-tech.github.io/1-seek/
 
-## Fonctionnement
-Déplacer le pointeur sur l'arène pour guider le serpent. Attraper les souris fait augmenter le score et la longueur. Les souris fuient lorsque le serpent approche.
+## Fonctionnalités
+- Serpent guidé par le pointeur, avec rotation limitée par son agilité
+- Souris autonomes qui errent et fuient lorsque le serpent approche
+- Score, croissance du serpent, chronomètre
+- Réglages en temps réel : nombre de souris, vitesses, agilité, longueur, rayon de fuite
+- Pause, recommencer, nouvelle vague
+- Arène néon et effets de particules
 
-- Arène futuriste à néons
-- Souris autonomes avec détection de danger et endurance
-- Compteur de captures, longueur du serpent et chronomètre
-- Réglages instantanés du nombre de souris, des vitesses, de l'agilité, de la longueur initiale et du rayon de fuite
-- Pause, redémarrage et nouvelle vague
+## Organisation
 
-## Démarrer localement
-Ouvrir `index.html` dans un navigateur : aucune installation requise.
+```text
+1-seek/
+├── index.html                 # Interface HTML
+├── style.css                  # Styles de l'arène
+├── README.md                  # Présentation
+├── SPECIFICATION.md           # Règles et architecture
+├── .gitignore
+├── src/
+│   ├── game.js                # Boucle de jeu, rendu et interactions
+│   └── behaviors/
+│       └── steering.js        # Seek, Flee, Wander simplifiés
+├── docs/
+│   └── behavior-mapping.md    # Cartographie des comportements
+├── tests/
+│   └── steering.test.cjs      # Tests unitaires
+└── course-reference/          # Sources pédagogiques du professeur
+    ├── README.md
+    ├── vehicle.js
+    ├── seek-vehicle.js
+    ├── target.js
+    ├── targetFuyante.js
+    ├── snake.js
+    ├── snakeRing.js
+    └── snakeWander.js
+```
 
-## Structure
-- `index.html` : jeu jouable autonome, incluant styles et logique Canvas
-- `SPECIFICATION.md` : règles du jeu, comportements et paramètres
-- `course-reference/` : **copies pédagogiques du professeur**, non chargées par le jeu
+## Exécution
+Ouvrir `index.html` dans un navigateur moderne. Aucune installation requise.
 
-## Liens avec le cours
-Le jeu actuel implémente une forme simplifiée de la **poursuite (Seek)**, de la **fuite (Flee)** et de l'**errance (Wander)** en JavaScript natif. Il **n'utilise pas encore les méthodes `Vehicle` fournies en cours**.
+## Tests
+Avec Node.js 18+ :
 
-Les fichiers pédagogiques originaux proviennent de :
+```bash
+node --test tests/*.test.cjs
+```
+
+Les tests vérifient la direction de poursuite, la direction de fuite, la stabilité à distance nulle et la direction d'errance.
+
+## Lien avec le cours de Steering Behaviors
+Le module `src/behaviors/steering.js` implémente **Seek, Flee et Wander sous forme de vecteurs directionnels simplifiés** utilisés dans le jeu. Ces fonctions ne reproduisent pas encore le calcul complet des forces de steering de la classe `Vehicle` de p5.js.
+
+Les fichiers originaux du professeur sont regroupés dans `course-reference/` **à titre de références pédagogiques non exécutées**. Leur provenance est documentée :
 https://github.com/micbuffa/IA2_SteeringBehaviors_Casablanca_G2/tree/main/1-Seek
 
-Ils sont fournis avec leur attribution dans `course-reference/README.md` et ne sont pas revendiqués comme code original du projet.
+Le code de Snake Hunt, ses réglages et son arène restent propres au projet.
 
-## Déploiement
-GitHub Pages : Settings → Pages → Deploy from a branch → `main` → `/ (root)`.
-
-Ce projet conserve son interface et sa logique propres.
+## Hébergement
+GitHub Pages sert `index.html` depuis la branche `main`, dossier `/ (root)`.
